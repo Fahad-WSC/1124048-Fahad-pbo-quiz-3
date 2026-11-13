@@ -25,23 +25,24 @@ public abstract class DataView<T> {
     }
 
 
-    public void printByPk(T records) {
+    public void printByPk(String primaryKey) {
         String[] dataFields = this.getFields();
-        for(int i = 0 ; i < this.records.size(); i++){
+
+       for(int i = 0 ; i < this.records.size(); i++){
         T record = this.records.get(i);
-        String primaryKey = this.getPrimaryKeyValue(records);
-        
-            for(int j = 0; j < dataFields.length; j++){
-            System.out.print(dataFields[j]+ "," + primaryKey[j]);
-            }
+        String[] values = this.convertModelToValues(record);
         }
+
+
+            
+        
     }
 
 
 
     public void showInsertForm(T records) {
         String[] dataFields = this.getFields();
-        String[] values = this.convertModelToValues(records);
+        String[] values = new String[dataFields.length];
 
         for(int i = 0; i <dataFields.length; i++){
             Scanner scanner = new Scanner(System.in);
