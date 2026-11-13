@@ -10,7 +10,9 @@ abstract class DataView<T> {
         this.records = new ArrayList<>();
     }
 
-    public void printAll(T records) {
+    public void printAll() {
+        String[] dataFields = this.getFields();
+        String[] values = this.convertModelToValues(records);
     }
     public void printByPk(T records) {
     }
