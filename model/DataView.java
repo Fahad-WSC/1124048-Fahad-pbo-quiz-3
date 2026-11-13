@@ -3,25 +3,33 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataView<T> {
+abstract class DataView<T> {
     private List<T> records;
 
     public DataView() {
         this.records = new ArrayList<>();
     }
 
-    public void addItem(T item) {
-        items.add(item);
+    public void printAll(T records) {
+    }
+    public void printByPk(T records) {
+    }
+    public void showInsertForm(T records) {
+    }
+    public void showUpdateForm(T records) {
+    }
+    public void promtDelete(T records) {
     }
 
-    public List<T> getItems() {
-        return items;
-    }
+    protected abstract String getPrimaryKeyValue(T data);
 
-    // Contoh Generic Method dengan Wildcard
-    public static void printItemDetails(List<?> list) {
-        for (Object obj : list) {
-            System.out.println("• " + obj.toString());
-        }
-    }
+    protected abstract String[] getFields();
+
+    protected abstract T convertValuesToModel(String[] values);
+
+    protected abstract String[] convertModelToValues(T data);
 }
+
+
+
+
